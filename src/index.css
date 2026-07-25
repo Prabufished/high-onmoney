@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+.deep-sea-gradient {
+  background-color: #000428;
+  background-image: linear-gradient(160deg, #000428 0%, #004E92 100%);
+}
+
+.gradient {
+  background-color: #000428;
+  background-image: linear-gradient(160deg, #000428 0%, #004E92 100%);
+}

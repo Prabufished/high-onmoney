@@ -1,112 +1,95 @@
 import React from 'react';
-import { Link2, Store, Smartphone, CheckCircle, Zap, Shield, HelpCircle } from 'lucide-react';
+import { MessageSquare, Upload, Truck, ArrowRight, ShieldCheck } from 'lucide-react';
+import { waLink } from '../utils/wa';
 
 export const HowItWorks: React.FC = () => {
+  const defaultWa = waLink('Hi TapForReview, I want to order NFC review stands for my business.');
+
+  const steps = [
+    {
+      stepNumber: '01',
+      title: 'WhatsApp us your order details',
+      description: 'Tell us which product (Acrylic Stand or NFC Card) and how many units you need.',
+      icon: MessageSquare,
+      color: 'bg-emerald-500 text-white',
+    },
+    {
+      stepNumber: '02',
+      title: 'Send review link & brand logo',
+      description: 'Share your business Google Maps link and logo. Our team confirms your print mockup.',
+      icon: Upload,
+      color: 'bg-[#1A56DB] text-white',
+    },
+    {
+      stepNumber: '03',
+      title: 'Programmed & dispatched in 48h',
+      description: 'We code your NFC chips, laser print your stands, and dispatch via free air courier.',
+      icon: Truck,
+      color: 'bg-amber-600 text-white',
+    },
+  ];
+
   return (
-    <section id="how-it-works" className="py-16 lg:py-24 bg-white relative">
+    <section id="how-it-works" className="py-16 sm:py-20 bg-[#F6F8FC] border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <span className="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+          <span className="bg-blue-100 text-[#1A56DB] font-extrabold text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-blue-200">
             Simple 3-Step Process
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-['Outfit'] tracking-tight">
-            How TapReview Boosts Your Google Reviews
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A2233] font-['Outfit']">
+            How TapForReview Works
           </h2>
-          <p className="text-base text-slate-600">
-            No complex setup, no software downloads, and no tech experience required. It works right out of the box in under 60 seconds.
+          <p className="text-slate-600 text-sm sm:text-base">
+            No complicated online accounts or registration. Order directly on WhatsApp in under 2 minutes.
           </p>
         </div>
 
-        {/* 3 Step Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-8 relative">
-          
-          {/* Connector Line (Desktop Only) */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-indigo-300 to-blue-200 -translate-y-12 z-0"></div>
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {steps.map((step, idx) => {
+            const Icon = step.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all space-y-4 relative"
+              >
+                {/* Step badge & icon */}
+                <div className="flex items-center justify-between">
+                  <div className={`w-12 h-12 rounded-2xl ${step.color} flex items-center justify-center font-bold shadow-md`}>
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <span className="font-black text-3xl text-slate-200 font-mono">
+                    {step.stepNumber}
+                  </span>
+                </div>
 
-          {/* Step 1 */}
-          <div className="relative z-10 bg-slate-50 border border-slate-200/80 rounded-3xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 group">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-blue-500/20 mb-6 group-hover:scale-110 transition-transform">
-              <Link2 className="w-7 h-7" />
-            </div>
-            <span className="text-xs font-extrabold text-blue-600 uppercase tracking-widest block mb-1">
-              Step 1
-            </span>
-            <h3 className="text-xl font-bold text-slate-900 mb-3 font-['Outfit']">
-              1. We Link Your Google Page
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              When ordering, simply enter your Business Name or Google Maps link. Our team program-encodes your exact Place ID chip before shipping.
-            </p>
-            <div className="mt-4 pt-4 border-t border-slate-200/60 flex items-center gap-2 text-xs text-blue-700 font-semibold">
-              <CheckCircle className="w-4 h-4 text-emerald-500" />
-              <span>100% Pre-tested & Locked</span>
-            </div>
-          </div>
-
-          {/* Step 2 */}
-          <div className="relative z-10 bg-slate-50 border border-slate-200/80 rounded-3xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 group">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 mb-6 group-hover:scale-110 transition-transform">
-              <Store className="w-7 h-7" />
-            </div>
-            <span className="text-xs font-extrabold text-indigo-600 uppercase tracking-widest block mb-1">
-              Step 2
-            </span>
-            <h3 className="text-xl font-bold text-slate-900 mb-3 font-['Outfit']">
-              2. Place at Billing Counter
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Position the acrylic counter stand or place the tap card right next to your payment counter or UPI QR scanner where customers gather.
-            </p>
-            <div className="mt-4 pt-4 border-t border-slate-200/60 flex items-center gap-2 text-xs text-indigo-700 font-semibold">
-              <CheckCircle className="w-4 h-4 text-emerald-500" />
-              <span>Includes High-Visibility Graphics</span>
-            </div>
-          </div>
-
-          {/* Step 3 */}
-          <div className="relative z-10 bg-slate-50 border border-slate-200/80 rounded-3xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 group">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-extrabold text-xl flex items-center justify-center shadow-lg shadow-emerald-500/20 mb-6 group-hover:scale-110 transition-transform">
-              <Smartphone className="w-7 h-7" />
-            </div>
-            <span className="text-xs font-extrabold text-emerald-600 uppercase tracking-widest block mb-1">
-              Step 3
-            </span>
-            <h3 className="text-xl font-bold text-slate-900 mb-3 font-['Outfit']">
-              3. Customer Taps or Scans
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Customer taps their phone (or scans the QR code). Your Google review form pops up immediately with 5 stars ready to post in 5 seconds!
-            </p>
-            <div className="mt-4 pt-4 border-t border-slate-200/60 flex items-center gap-2 text-xs text-emerald-700 font-semibold">
-              <CheckCircle className="w-4 h-4 text-emerald-500" />
-              <span>3X Higher Conversion Rate</span>
-            </div>
-          </div>
-
+                {/* Content */}
+                <div className="space-y-2">
+                  <h3 className="font-extrabold text-lg text-[#1A2233] font-['Outfit']">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Compatibility & Tech Note Banner */}
-        <div className="mt-12 bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-blue-700/50 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-400/40 text-blue-300 flex items-center justify-center shrink-0">
-              <Zap className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-extrabold text-base sm:text-lg text-white">
-                Dual Technology Guarantee: NFC + Backup QR Code
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-300 mt-0.5">
-                Works natively on 100% of smartphones in India. iPhone, Samsung, Xiaomi, Vivo, Oppo, OnePlus. <span className="text-emerald-300 font-semibold">No app needed.</span>
-              </p>
-            </div>
-          </div>
+        {/* Action Callout */}
+        <div className="mt-12 text-center">
           <a
-            href="#pricing"
-            className="shrink-0 bg-white hover:bg-blue-50 text-blue-900 font-bold px-6 py-3 rounded-xl text-xs sm:text-sm shadow-md transition-transform hover:scale-105"
+            href={defaultWa}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold px-8 py-3.5 rounded-2xl shadow-lg hover:shadow-xl transition-all text-sm sm:text-base"
           >
-            Choose Your Pack →
+            <MessageSquare className="w-5 h-5 fill-current" />
+            <span>Start WhatsApp Order Now</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 

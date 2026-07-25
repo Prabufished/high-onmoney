@@ -1,73 +1,62 @@
 import React from 'react';
-import { BUSINESS_CATEGORIES } from '../data/products';
-import { Utensils, Scissors, Stethoscope, Dumbbell, Hotel, ShoppingBag, Car, Briefcase, TrendingUp, Lightbulb } from 'lucide-react';
+import { Utensils, Scissors, Stethoscope, Dumbbell, ShoppingBag, Hotel, Car, Store, Sparkles } from 'lucide-react';
+import { waLink } from '../utils/wa';
 
 export const WhoItsFor: React.FC = () => {
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Utensils': return <Utensils className="w-6 h-6" />;
-      case 'Scissors': return <Scissors className="w-6 h-6" />;
-      case 'Stethoscope': return <Stethoscope className="w-6 h-6" />;
-      case 'Dumbbell': return <Dumbbell className="w-6 h-6" />;
-      case 'Hotel': return <Hotel className="w-6 h-6" />;
-      case 'ShoppingBag': return <ShoppingBag className="w-6 h-6" />;
-      case 'Car': return <Car className="w-6 h-6" />;
-      case 'Briefcase': return <Briefcase className="w-6 h-6" />;
-      default: return <TrendingUp className="w-6 h-6" />;
-    }
-  };
+  const categories = [
+    { name: 'Restaurants & Cafes', icon: Utensils, desc: 'Table service & billing desk taps' },
+    { name: 'Salons & Spas', icon: Scissors, desc: 'Hair, beauty & wellness counters' },
+    { name: 'Clinics & Dentists', icon: Stethoscope, desc: 'Doctors & healthcare desks' },
+    { name: 'Gyms & Fitness', icon: Dumbbell, desc: 'Workout studios & reception' },
+    { name: 'Showrooms', icon: ShoppingBag, desc: 'Jewelry, apparel & electronics' },
+    { name: 'Hotels & Resorts', icon: Hotel, desc: 'Reception & concierge check-out' },
+    { name: 'Service Centres', icon: Car, desc: 'Auto repair, mobile & garage' },
+    { name: 'Retail Shops', icon: Store, desc: 'Neighborhood retail & boutiques' },
+  ];
 
   return (
-    <section id="who-its-for" className="py-16 lg:py-24 bg-white relative">
+    <section id="who-its-for" className="py-16 sm:py-20 bg-[#F6F8FC] border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <span className="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-            Tailored For Local Indian Retail & Services
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <span className="bg-blue-100 text-[#1A56DB] font-extrabold text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-blue-200">
+            Target Businesses
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-['Outfit'] tracking-tight">
-            Designed for Every Customer-Facing Business
+          <h2 className="text-3xl sm:text-4xl font-black text-[#1A2233] font-['Outfit']">
+            Who TapForReview Is For
           </h2>
           <p className="text-slate-600 text-sm sm:text-base">
-            Whether you run a bustling cafe in Mumbai or a dental clinic in Delhi, TapReview turns foot traffic into a high-ranking Google Maps profile.
+            Ideal for local Indian brick-and-mortar outlets looking to rank #1 on Google Maps.
           </p>
         </div>
 
-        {/* Business Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {BUSINESS_CATEGORIES.map((category) => (
-            <div
-              key={category.id}
-              className="bg-slate-50 border border-slate-200/80 rounded-3xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group"
-            >
-              <div>
-                {/* Category Icon */}
-                <div className={`w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform ${category.bgGradient}`}>
-                  {getIcon(category.icon)}
-                </div>
+        {/* Small Icon Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+          {categories.map((cat, idx) => {
+            const Icon = cat.icon;
+            const waUrl = waLink(`Hi TapForReview, I run a ${cat.name} and want to order Google Review Stands.`);
 
-                <h3 className="font-bold text-lg text-slate-900 font-['Outfit'] mb-1">
-                  {category.title}
+            return (
+              <a
+                key={idx}
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white border border-slate-200 hover:border-[#1A56DB] rounded-2xl p-5 text-center shadow-xs hover:shadow-md transition-all group space-y-2 block"
+              >
+                <div className="w-12 h-12 mx-auto rounded-xl bg-blue-50 text-[#1A56DB] group-hover:bg-[#1A56DB] group-hover:text-white flex items-center justify-center transition-colors">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="font-extrabold text-sm text-[#1A2233] font-['Outfit']">
+                  {cat.name}
                 </h3>
-                <p className="text-xs text-slate-500 font-medium mb-3">
-                  {category.subtitle}
+                <p className="text-[11px] text-slate-500 leading-tight">
+                  {cat.desc}
                 </p>
-
-                {/* Growth Badge */}
-                <div className="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-1 rounded-lg mb-4">
-                  <TrendingUp className="w-3.5 h-3.5" />
-                  <span>{category.reviewGrowth}</span>
-                </div>
-              </div>
-
-              {/* Pro Tip Box */}
-              <div className="bg-white p-3 rounded-xl border border-slate-200/80 text-[11px] text-slate-600 flex items-start gap-2 mt-2">
-                <Lightbulb className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                <span className="leading-snug">{category.tip}</span>
-              </div>
-            </div>
-          ))}
+              </a>
+            );
+          })}
         </div>
 
       </div>

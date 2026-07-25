@@ -1,6 +1,6 @@
 {
-  "name": "TapReview India - NFC Google Review Cards & Stands",
-  "description": "Get 3X More Google Reviews with NFC & QR Tap Cards and Counter Stands for Indian Businesses.",
+  "name": "TapForReview - NFC Google Review Stand India",
+  "description": "NFC & QR code tap-to-review stands and cards for Indian businesses. Tap to review on Google instantly.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
